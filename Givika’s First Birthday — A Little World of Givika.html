@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Givika’s First Birthday — A Little World of Givika</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--sky1:#fde4ef;--sky2:#e6dcff;--sky3:#d3ebff;--ink:#5b4a75;--accent:#c06c9b;--card:rgba(255,255,255,.6);--line:rgba(255,255,255,.85);--btn:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky1:#3d2b5e;--sky2:#2b2651;--sky3:#233a63;--ink:#f6eaff;--accent:#ffb8d9;--card:rgba(40,30,72,.55);--line:rgba(255,255,255,.2);--btn:#4a3a78}}
+:root[data-theme="dark"]{--sky1:#3d2b5e;--sky2:#2b2651;--sky3:#233a63;--ink:#f6eaff;--accent:#ffb8d9;--card:rgba(40,30,72,.55);--line:rgba(255,255,255,.2);--btn:#4a3a78}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100%;font-family:'Jost',system-ui,sans-serif;font-weight:300;color:var(--ink);background:linear-gradient(180deg,var(--sky1),var(--sky2) 55%,var(--sky3));background-attachment:fixed;overflow:hidden;-webkit-tap-highlight-color:transparent}
+body.open{overflow-y:auto}
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+#intro{position:fixed;inset:0;z-index:5;border:0;background:transparent;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:calc(9vh + env(safe-area-inset-top,0px)) 24px calc(9vh + env(safe-area-inset-bottom,0px));cursor:pointer;text-align:center;font:inherit}
+#intro .eb{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(1.5rem,6vw,2.3rem)}
+#intro .tap{font-weight:400;letter-spacing:.28em;text-transform:uppercase;font-size:.78rem;padding:14px 26px;border-radius:99px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(10px);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06);box-shadow:0 0 28px rgba(255,170,215,.7)}}
+#nogl{display:none;font-size:6rem}
+#mu{position:fixed;z-index:9;right:14px;top:calc(12px + env(safe-area-inset-top,0px));border:1px solid var(--line);background:var(--card);color:var(--ink);backdrop-filter:blur(10px);border-radius:99px;padding:9px 16px;font:400 .8rem 'Jost',sans-serif;letter-spacing:.08em;cursor:pointer;display:none}
+body.open #mu{display:block}
+main{position:relative;z-index:2;visibility:hidden}
+body.open main{visibility:visible}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:12vh 20px 9vh}
+.hero .rv{opacity:0}
+.eyebrow{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(1.3rem,5vw,1.9rem)}
+.name{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(3.2rem,16vw,8rem);letter-spacing:.12em;margin:0 0 0 .12em;line-height:1;background:linear-gradient(100deg,#e58bb7,#a78bef 50%,#f0a782);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 14px rgba(255,255,255,.6))}
+.sub{font-size:.85rem;letter-spacing:.38em;text-transform:uppercase;margin-top:12px;font-weight:400}
+.scroll{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;opacity:.7;margin-top:22px}
+.inv{padding:6vh 18px calc(10vh + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;gap:26px}
+.card{width:100%;max-width:470px;text-align:center;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:32px;padding:38px 26px;box-shadow:0 20px 60px rgba(160,110,200,.22)}
+.kick{letter-spacing:.4em;text-transform:uppercase;font-size:.74rem;font-weight:400;color:var(--accent)}
+.card h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(2rem,9vw,2.8rem);margin:10px 0 4px;line-height:1.1}
+.orn{color:var(--accent);letter-spacing:.6em;margin:14px 0}
+.row{margin:18px 0}
+.row .l{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;opacity:.7}
+.row .v{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.65rem;font-weight:500;line-height:1.25;margin-top:4px}
+.row .v small{display:block;font-family:'Jost',sans-serif;font-size:.9rem;font-weight:300}
+.quote{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:1.35rem;max-width:420px;text-align:center;line-height:1.4}
+.btns{width:100%;max-width:470px;display:grid;gap:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 20px;border-radius:99px;border:1px solid var(--line);background:var(--btn);color:var(--ink);text-decoration:none;font:400 .86rem 'Jost',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 24px rgba(180,130,210,.2);transition:transform .2s}
+.btn:active{transform:scale(.97)}
+.btn.p{background:linear-gradient(100deg,#f29bc3,#b69cf4);color:#fff;border:0;box-shadow:0 10px 30px rgba(225,120,180,.45)}
+.btn.love{background:transparent;border:1.5px dashed var(--accent);color:var(--accent)}
+.cnt{font-size:.78rem;letter-spacing:.14em;text-align:center;opacity:.8;min-height:1.2em;margin-top:-2px}
+.rsvp{font-size:.9rem;letter-spacing:.12em}
+.foot{margin-top:6px;text-align:center}
+.foot .name{font-size:clamp(2rem,10vw,3.4rem)}
+.sr{opacity:0;transform:translateY(34px);transition:opacity 1s,transform 1s}
+.sr.in{opacity:1;transform:none}
+.fl{position:fixed;z-index:20;pointer-events:none;font-size:1.6rem;will-change:transform}
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<button id="mu" aria-label="Toggle music">♪ Music On</button>
+
+<button id="intro" aria-label="Tap to open your invitation">
+  <span class="eb">A Little World of Givika</span>
+  <span id="nogl">🎁</span>
+  <span class="tap">Tap to Open Your Invitation</span>
+</button>
+
+<main id="app">
+  <section class="hero">
+    <div class="rv"><div class="eyebrow">Once upon a time…</div></div>
+    <div class="rv" style="margin-top:auto;margin-bottom:auto"></div>
+    <div class="rv">
+      <h1 class="name">GIVIKA</h1>
+      <div class="sub">is turning one</div>
+      <div class="scroll">Scroll ↓</div>
+    </div>
+  </section>
+
+  <section class="inv">
+    <p class="quote sr">A little princess is turning ONE!</p>
+    <div class="card sr">
+      <div class="kick">You are invited</div>
+      <h2>Givika’s<br>First Birthday</h2>
+      <div class="orn">✦ ✦ ✦</div>
+      <div class="row"><div class="l">Date</div><div class="v">Friday, 27 November 2026</div></div>
+      <div class="row"><div class="l">Time</div><div class="v">4:00 PM onwards</div></div>
+      <div class="row"><div class="l">Venue</div><div class="v">Angel Resort<small>Rajawas, Jaipur, Rajasthan</small></div></div>
+    </div>
+    <p class="quote sr">One year of love, laughter &amp; endless magic.</p>
+    <div class="btns sr">
+      <a class="btn p" target="_blank" rel="noopener" href="https://wa.me/919785447559?text=Hello%2C%20we%20would%20love%20to%20attend%20Givika%27s%20First%20Birthday%20celebration%20on%2027%20November%202026.%20Thank%20you%20for%20inviting%20us!">🎈 I’ll Be There!</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/1kmUuC3hJDfzf8iNA">📍 Get Directions</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Givika%E2%80%99s%20First%20Birthday&amp;dates=20261127T160000%2F20261127T160000&amp;ctz=Asia%2FKolkata&amp;details=Come%20celebrate%20this%20magical%20milestone%20with%20us!&amp;location=Angel%20Resort%2C%20Rajawas%2C%20Jaipur%2C%20Rajasthan%2C%20India">🗓 Add to Calendar</a>
+      <button class="btn love" id="love" type="button">💗 Send Givika Some Love</button>
+      <div class="cnt" id="cnt"></div>
+    </div>
+    <p class="quote sr">Come celebrate this magical milestone with us!</p>
+    <div class="rsvp sr">RSVP: +91 9785447559</div>
+    <div class="foot sr"><h2 class="name">GIVIKA</h2></div>
+  </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+let GL=null,opened=false;
+try{GL=initGL();}catch(e){console.warn('WebGL unavailable',e);$('#gl').style.display='none';$('#nogl').style.display='block';}
+
+function initGL(){
+  const R=new THREE.WebGLRenderer({canvas:$('#gl'),antialias:true,alpha:true});
+  R.setPixelRatio(Math.min(devicePixelRatio||1,2));
+  const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(45,1,.1,100);
+  S.add(new THREE.HemisphereLight(0xffffff,0xf0d8ff,.95));
+  const dl=new THREE.DirectionalLight(0xfff0e6,.9);dl.position.set(4,8,8);S.add(dl);
+  const pink=0xf7b6cf,lav=0xc9b6f2,pastel=[pink,lav,0xbfe0ff,0xffd2b8,0xfff3e0,0xe8c8ff];
+  const mat=(c,r=.45)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:.05});
+
+  /* gift box */
+  const gift=new THREE.Group();S.add(gift);gift.position.y=-1;gift.scale.setScalar(1.1);
+  gift.add(new THREE.Mesh(new THREE.BoxGeometry(2.4,2,2.4),mat(pink)));
+  [[.4,2.02,2.42],[2.42,2.02,.4]].forEach(d=>gift.add(new THREE.Mesh(new THREE.BoxGeometry(...d),mat(lav))));
+  const lid=new THREE.Group();lid.position.y=1.25;gift.add(lid);
+  lid.add(new THREE.Mesh(new THREE.BoxGeometry(2.7,.5,2.7),mat(0xf2a3c4)));
+  [[.4,.52,2.72],[2.72,.52,.4]].forEach(d=>lid.add(new THREE.Mesh(new THREE.BoxGeometry(...d),mat(lav))));
+  for(const s of[-1,1]){const l=new THREE.Mesh(new THREE.SphereGeometry(.5,20,16),mat(lav,.35));l.scale.set(1.2,.7,.6);l.position.set(s*.55,.5,0);l.rotation.z=s*.5;lid.add(l);}
+  const kn=new THREE.Mesh(new THREE.SphereGeometry(.24,16,12),mat(lav,.35));kn.position.y=.48;lid.add(kn);
+
+  /* clouds */
+  const clouds=[];
+  for(let i=0;i<8;i++){
+    const g=new THREE.Group(),m=new THREE.MeshStandardMaterial({color:0xffffff,roughness:1,emissive:0xffffff,emissiveIntensity:.35,transparent:true,opacity:.92});
+    for(let j=0;j<5;j++){const s=new THREE.Mesh(new THREE.SphereGeometry(1,16,12),m);s.position.set((j-2)*1.1,Math.sin(j*1.7)*.4,0);s.scale.setScalar(.9+Math.sin(j*2.3)*.3+.3);g.add(s);}
+    g.scale.setScalar(.8+Math.random()*.8);g.position.set(-16+i*4.2,(Math.random()-.5)*14,-8-Math.random()*6);g.userData.v=.1+Math.random()*.15;S.add(g);clouds.push(g);
+  }
+
+  /* sparkles */
+  const cv=document.createElement('canvas');cv.width=cv.height=64;const cx=cv.getContext('2d'),gr=cx.createRadialGradient(32,32,0,32,32,32);
+  gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(.25,'rgba(255,240,250,.8)');gr.addColorStop(1,'rgba(255,255,255,0)');cx.fillStyle=gr;cx.fillRect(0,0,64,64);
+  const pos=new Float32Array(180*3);for(let i=0;i<pos.length;i+=3){pos[i]=(Math.random()-.5)*26;pos[i+1]=(Math.random()-.5)*20;pos[i+2]=(Math.random()-.5)*10-1;}
+  const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const spark=new THREE.Points(pg,new THREE.PointsMaterial({size:.35,map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));S.add(spark);
+
+  /* butterflies */
+  const bf=[],bc=[0xf59ac0,0xb99cf5,0x9fd0ff,0xffc19a,0xffffff];
+  for(let i=0;i<10;i++){
+    const g=new THREE.Group(),m=new THREE.MeshBasicMaterial({color:bc[i%5],side:THREE.DoubleSide,transparent:true,opacity:.92});
+    const mk=s=>{const p=new THREE.Group(),w=new THREE.Mesh(new THREE.CircleGeometry(.45,18),m);w.scale.set(1,.8,1);w.position.x=s*.45;p.add(w);g.add(p);return p;};
+    g.userData={L:mk(-1),R:mk(1),ph:Math.random()*6.28,a:Math.random()*6.28,sp:.25+Math.random()*.3,rx:3+Math.random()*3.5,ry:2+Math.random()*3,cz:Math.random()*3-1,mix:0};
+    g.scale.setScalar(.7+Math.random()*.5);g.visible=false;S.add(g);bf.push(g);
+  }
+
+  /* balloons */
+  const bl=[];
+  for(let i=0;i<14;i++){
+    const g=new THREE.Group(),c=pastel[i%6],b=new THREE.Mesh(new THREE.SphereGeometry(.7,24,20),mat(c,.25));b.scale.y=1.18;g.add(b);
+    const k=new THREE.Mesh(new THREE.ConeGeometry(.12,.2,10),mat(c));k.position.y=-.88;k.rotation.x=Math.PI;g.add(k);
+    g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-1,0),new THREE.Vector3(.12,-2.2,0),new THREE.Vector3(-.1,-3.4,0)]),new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:.7})));
+    const side=i%2?1:-1;g.position.set(side*(2.5+Math.random()*5.5),-12,-2+Math.random()*4);
+    g.userData={v:.7+Math.random()*.6,ph:Math.random()*6,x0:g.position.x};g.visible=false;S.add(g);bl.push(g);
+  }
+
+  /* giant number 1 */
+  const pts=[[-1,1],[.1,2.5],[1,2.5],[1,-1.8],[1.8,-1.8],[1.8,-2.5],[-.8,-2.5],[-.8,-1.8],[0,-1.8],[0,1.4]];
+  const sh=new THREE.Shape();pts.forEach((p,i)=>i?sh.lineTo(p[0],p[1]):sh.moveTo(p[0],p[1]));
+  const og=new THREE.ExtrudeGeometry(sh,{depth:.8,bevelEnabled:true,bevelSize:.14,bevelThickness:.16,bevelSegments:6});og.center();
+  const one=new THREE.Mesh(og,new THREE.MeshStandardMaterial({color:0xf6c3a6,roughness:.32,metalness:.18,emissive:0xffb8d0,emissiveIntensity:.18}));
+  one.scale.setScalar(.85);one.visible=false;one.userData.rise=-12;S.add(one);
+
+  function rs(){const w=innerWidth,h=innerHeight;R.setSize(w,h,false);C.aspect=w/h;C.position.z=w/h<.8?17:13;C.updateProjectionMatrix();}
+  addEventListener('resize',rs);rs();
+  let px=0,last=0;
+  addEventListener('pointermove',e=>{px=e.clientX/innerWidth-.5;});
+  function tick(ms){
+    const t=ms/1000,dt=Math.min(t-last,.05);last=t;
+    C.position.x+=(px*1.4-C.position.x)*.03;
+    gift.position.y=-1+Math.sin(t*1.6)*.15;gift.rotation.y=Math.sin(t*.6)*.35;
+    clouds.forEach(c=>{c.position.x+=c.userData.v*dt;if(c.position.x>18)c.position.x=-18;});
+    spark.rotation.z=t*.01;spark.material.opacity=.65+.35*Math.sin(t*2);
+    bf.forEach(b=>{if(!b.visible)return;const d=b.userData,a=t*d.sp+d.a,f=Math.sin(t*11+d.ph)*.9;
+      b.position.set(Math.cos(a)*d.rx*d.mix,(Math.sin(a*1.3)*d.ry+.5)*d.mix,d.cz*d.mix);
+      d.L.rotation.y=-f;d.R.rotation.y=f;b.rotation.z=Math.cos(a)*.3;});
+    bl.forEach(b=>{if(!b.visible)return;const d=b.userData;b.position.y+=d.v*dt;b.position.x=d.x0+Math.sin(t*.8+d.ph)*.4;b.rotation.z=Math.sin(t+d.ph)*.08;
+      if(b.position.y>11)b.position.y=-11-Math.random()*3;});
+    if(one.visible){const sy=Math.min(scrollY/innerHeight,1.4);one.position.y=one.userData.rise+sy*7;one.rotation.y=Math.sin(t*.7)*.5;one.rotation.z=Math.sin(t*.5)*.05;}
+    R.render(S,C);requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  return{gift,lid,one,bl,bf};
+}
+
+/* ---------- original synthesised soundtrack (Web Audio) ---------- */
+let AC,master,muted=false,seq=0,nextT=0;
+const ed=.357,bd=ed*8,fq=m=>440*Math.pow(2,(m-69)/12);
+const roots=[36,41,45,43,36,41,43,36];
+const pads=[[60,64,67],[57,60,65],[57,60,64],[59,62,67],[60,64,67],[57,60,65],[59,62,67],[60,64,67]];
+const mel=[[76,79,84,79,76,79,72,0],[77,81,84,81,77,81,72,0],[76,81,84,81,76,72,69,0],[74,79,83,79,74,79,71,0],
+  [76,79,84,88,84,79,76,0],[77,81,84,81,89,84,81,77],[74,79,83,86,83,79,74,0],[72,76,79,84,0,0,0,0]];
+function tone(m,t,d,g,type='sine',a=.005){const o=AC.createOscillator(),e=AC.createGain();o.type=type;o.frequency.value=fq(m);
+  e.gain.setValueAtTime(0,t);e.gain.linearRampToValueAtTime(g,t+a);e.gain.exponentialRampToValueAtTime(.0001,t+d);
+  o.connect(e);e.connect(master);o.start(t);o.stop(t+d+.05);}
+function musicBox(m,t){tone(m,t,1.6,.15);tone(m+12,t,.9,.045);tone(m+19,t,.4,.022,'triangle');}
+function bar(i,t){const k=i%8;pads[k].forEach(m=>tone(m,t,bd*1.15,.045,'sine',bd*.4));tone(roots[k],t,2.2,.09,'triangle',.02);
+  mel[k].forEach((m,j)=>{if(m)musicBox(m,t+j*ed);});
+  if(k%2)tone(96+(k%3)*4,t+ed*3,2.2,.03);if(k===7)[96,100,103,108].forEach((m,j)=>tone(m,t+j*.12,1.8,.04));}
+function sched(){while(nextT<AC.currentTime+1.5){bar(seq++,nextT);nextT+=bd;}}
+function startAudio(){
+  try{AC=new(window.AudioContext||window.webkitAudioContext)();master=AC.createGain();master.gain.value=.55;
+    const dly=AC.createDelay(),fb=AC.createGain(),wet=AC.createGain();dly.delayTime.value=.36;fb.gain.value=.35;wet.gain.value=.3;
+    master.connect(AC.destination);master.connect(dly);dly.connect(fb);fb.connect(dly);dly.connect(wet);wet.connect(AC.destination);
+    AC.resume();nextT=AC.currentTime+.1;sched();setInterval(sched,400);
+    [96,100,103,108,112].forEach((m,i)=>tone(m,AC.currentTime+i*.09,1.4,.05));
+  }catch(e){console.warn('Audio unavailable',e);}
+}
+$('#mu').addEventListener('click',()=>{if(!AC)return;muted=!muted;master.gain.setTargetAtTime(muted?0:.55,AC.currentTime,.1);$('#mu').textContent=muted?'♪ Music Off':'♪ Music On';});
+
+/* ---------- opening sequence ---------- */
+$('#intro').addEventListener('click',()=>{
+  if(opened)return;opened=true;startAudio();
+  const tl=gsap.timeline();
+  gsap.to('#intro .eb,#intro .tap',{opacity:0,y:10,duration:.5});
+  if(GL){
+    const{lid,gift,one,bl,bf}=GL;
+    tl.to(lid.position,{y:4.5,duration:.9,ease:'power2.out'},0).to(lid.rotation,{z:.7,duration:.9},0);
+    bf.forEach((b,i)=>{b.visible=true;gsap.to(b.userData,{mix:1,duration:2.6,delay:.5+i*.12,ease:'power2.out'});});
+    bl.forEach(b=>{b.visible=true;b.position.y=-6-Math.random()*6;});
+    gsap.to(gift.scale,{x:0,y:0,z:0,duration:.8,delay:1.4,ease:'back.in(1.7)'});
+    one.visible=true;gsap.to(one.userData,{rise:0,duration:2.4,delay:1.6,ease:'power3.out'});
+  }
+  gsap.to('#intro',{opacity:0,duration:.8,delay:1.1,onComplete:()=>{$('#intro').style.display='none';}});
+  setTimeout(()=>{document.body.classList.add('open');
+    gsap.to('.hero .rv',{opacity:1,y:0,duration:1.4,stagger:.35,ease:'power2.out'});},1300);
+});
+
+/* ---------- scroll reveals ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.2});
+document.querySelectorAll('.sr').forEach(el=>io.observe(el));
+
+/* ---------- Send Givika Some Love ---------- */
+let n=0;
+$('#love').addEventListener('click',e=>{
+  const r=e.currentTarget.getBoundingClientRect(),set=['💗','⭐','🎈','✨','🦋','💜','🎀'];
+  for(let i=0;i<16;i++){
+    const s=document.createElement('span');s.className='fl';s.textContent=set[Math.floor(Math.random()*set.length)];
+    s.style.left=(r.left+r.width/2)+'px';s.style.top=(r.top+r.height/2)+'px';document.body.appendChild(s);
+    gsap.fromTo(s,{scale:.4,opacity:1},{x:(Math.random()-.5)*280,y:-(180+Math.random()*320),rotation:(Math.random()-.5)*80,scale:1+Math.random()*.8,opacity:0,duration:1.8+Math.random()*1.2,ease:'power1.out',onComplete:()=>s.remove()});
+  }
+  n++;$('#cnt').textContent='Love sent to Givika: '+n+' 💗';
+});
+</script>
+</body>
+</html>
